@@ -99,7 +99,8 @@ func (o *Format) DateTime(dt *dtsavro.DateTime) (v interface{}, err error) {
 	if dt.Second != nil {
 		years[5] = dt.Second.Int
 	}
-	*s = fmt.Sprintf("%04d-%02d-%02d %02d:%02d:%02d", years[0], years[1], years[2], years[3], years[4], years[5])
+	vs := fmt.Sprintf("%04d-%02d-%02d %02d:%02d:%02d", years[0], years[1], years[2], years[3], years[4], years[5])
+	s = &vs
 	v = s
 	return
 }

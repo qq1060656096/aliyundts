@@ -1,10 +1,19 @@
 package parse
 
-import "github.com/qq1060656096/aliyundts/dtsavro"
+import (
+	"github.com/qq1060656096/aliyundts/dtsavro"
+)
 
-type DtsRecord dtsavro.Record
+type DtsRecord struct {
+	dtsavro.Record
+}
 
-func (o *DtsRecord) GetBeforeImagesFields(f Formatter) (v []RecordField, err error) {
+func NewRecord() *DtsRecord {
+	return &DtsRecord{
+	}
+}
+
+func (o *DtsRecord) GetBeforeImagesFields() (v []RecordField, err error) {
 	beforeImagesArr := o.BeforeImages.ArrayUnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObject
 	return o.GetImagesFieldsRaw(beforeImagesArr)
 }
