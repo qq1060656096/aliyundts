@@ -1,6 +1,6 @@
 package parse
 
-import "dhb168.com/x-store/aliyundts/dtsavro"
+import "github.com/qq1060656096/aliyundts/dtsavro"
 
 type DtsRecord dtsavro.Record
 

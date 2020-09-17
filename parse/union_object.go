@@ -1,7 +1,7 @@
 package parse
 
 import (
-	"dhb168.com/x-store/aliyundts/dtsavro"
+	"github.com/qq1060656096/aliyundts/dtsavro"
 	"fmt"
 )
 
