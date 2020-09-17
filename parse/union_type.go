@@ -1,0 +1,46 @@
+package parse
+
+import (
+	"fmt"
+	"github.com/qq1060656096/aliyundts/dtsavro"
+)
+
+type UnionType struct {
+	formatter Formatter
+	dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObject
+}
+
+func (r *UnionType) GetValue() (v interface{}, err error) {
+	if r == nil {
+		return nil, nil
+	}
+	switch r.UnionType {
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumInteger:
+		return r.formatter.Integer(r.Integer)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumCharacter:
+		return r.formatter.Character(r.Character)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumDecimal:
+		return r.formatter.Decimal(r.Decimal)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumFloat:
+		return r.formatter.Float(r.Float)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumTimestamp:
+		return r.formatter.Timestamp(r.Timestamp)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumDateTime:
+		return r.formatter.DateTime(r.DateTime)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumTimestampWithTimeZone:
+		return r.formatter.TimestampWithTimeZone(r.TimestampWithTimeZone)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumBinaryGeometry:
+		return r.formatter.BinaryGeometry(r.BinaryGeometry)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumTextGeometry:
+		return r.formatter.TextGeometry(r.TextGeometry)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumBinaryObject:
+		return r.formatter.BinaryObject(r.BinaryObject)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumTextObject:
+		return r.formatter.TextObject(r.TextObject)
+	case dtsavro.UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObjectTypeEnumEmptyObject:
+		return r.formatter.EmptyObject(&r.EmptyObject)
+	}
+	return nil, fmt.Errorf("invalid value for *UnionNullIntegerCharacterDecimalFloatTimestampDateTimeTimestampWithTimeZoneBinaryGeometryTextGeometryBinaryObjectTextObjectEmptyObject")
+}
+
+
